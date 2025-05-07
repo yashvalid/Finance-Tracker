@@ -8,7 +8,7 @@ export const FinanceProvider = ({ children }) => {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/transaction/all`, {withCredentials : true});
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/transaction/all`);
         if (response.status === 200)
           setTransactions(response.data.allTransactions);
         console.log("Fetched transactions:", response.data.allTransactions);

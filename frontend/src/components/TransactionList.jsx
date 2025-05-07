@@ -56,7 +56,7 @@ export const TransactionList = () => {
     try {
       
       console.log("data to update",formData)
-      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/transaction/update`, {...formData, _id}, { withCredentials: true });
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/transaction/update`, {...formData, _id},);
       if (response.status === 200) {
         setTransactions(transactions.map((transaction) => {
           if (transaction._id === response.data.result._id) {
