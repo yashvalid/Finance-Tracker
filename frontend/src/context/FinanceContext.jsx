@@ -2,50 +2,6 @@ import React, { useState, createContext, useContext, useEffect } from "react";
 import axios from "axios";
 export const FinanceContext = createContext(undefined);
 
-// // Sample initial data
-// const initialTransactions = [
-//   {
-//     id: "1",
-//     Tname: "Salary",
-//     amount: 3000,
-//     date: "2023-06-01",
-//     category: "Income",
-//     transactionType: "income",
-//   },
-//   {
-//     id: "2",
-//     Tname: "Rent",
-//     amount: 1200,
-//     date: "2023-06-03",
-//     category: "Housing",
-//     transactionType: "expense",
-//   },
-//   {
-//     id: "3",
-//     Tname: "Groceries",
-//     amount: 150,
-//     date: "2023-06-05",
-//     category: "Food",
-//     transactionType: "expense",
-//   },
-//   {
-//     id: "4",
-//     Tname: "Freelance Work",
-//     amount: 500,
-//     date: "2023-06-10",
-//     category: "Income",
-//     transactionType: "income",
-//   },
-//   {
-//     id: "5",
-//     Tname: "Restaurant",
-//     amount: 75,
-//     date: "2023-06-12",
-//     category: "Food",
-//     transactionType: "expense",
-//   },
-// ];
-
 export const FinanceProvider = ({ children }) => {
   const [transactions, setTransactions] = useState([]);
 
