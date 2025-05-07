@@ -7,7 +7,7 @@ const cors = require('cors')
 
 connectDB();
 const corsOptions = {
-    origin: 'http://localhost:5173', // Replace with your frontend's URL
+    origin: '*', 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     optionsSuccessStatus: 200
