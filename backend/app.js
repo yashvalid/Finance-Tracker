@@ -9,7 +9,7 @@ const userRouter = require('./routes/user.route');
 
 connectDB();
 const corsOptions = {
-    origin: 'http://localhost:5173', // <-- your frontend's URL
+    origin: process.env.ORIGIN, 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     optionsSuccessStatus: 200
