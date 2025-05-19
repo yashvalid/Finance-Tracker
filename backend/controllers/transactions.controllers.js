@@ -2,13 +2,16 @@ const Transaction = require("../models/transaction.model");
 
 module.exports.addTransaction = async (req, res) => {
     try {
-        const { Tname, amount, transactionType, category, date } = req.body;
+        const { Tname, amount, transactionType, category } = req.body;
+        const user = req.user;
+        console.log(user);
         const trans = await Transaction.create({
             Tname,
             amount,
             transactionType,
             category,
-            date,
+            date : new Date(),
+            user,
         })
         if (trans)
             return res.status(200).json({ transaction: trans });
@@ -34,7 +37,8 @@ module.exports.deleteTransaction = async (req, res) => {
 
 module.exports.getAllTransactions = async (req, res) => {
     try {
-        const allTransactions = await Transaction.find({});
+        const user = req.user;
+        const allTransactions = await Transaction.find({user});
         if(!allTransactions || allTransactions.length === 0)
             return res.status(400).json({ message: "No transactions found" });
         return res.status(200).json({ allTransactions });

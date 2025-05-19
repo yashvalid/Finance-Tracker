@@ -8,7 +8,7 @@ export const FinanceProvider = ({ children }) => {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/transaction/all`);
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/transaction/all`, {withCredentials : true});
         if (response.status === 200)
           setTransactions(response.data.allTransactions);
         console.log("Fetched transactions:", response.data.allTransactions);
@@ -21,7 +21,7 @@ export const FinanceProvider = ({ children }) => {
 
   const addTransaction = async (transaction) => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/transaction/add`, transaction);
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/transaction/add`, transaction, {withCredentials : true});
       if (response.status === 200)
         setTransactions([...(transactions || []), response.data.transaction]);
     } catch (err) {
@@ -31,7 +31,7 @@ export const FinanceProvider = ({ children }) => {
 
   const deleteTransaction = async (_id) => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/transaction/delete`, { _id });
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/transaction/delete`, { _id }, {withCredentials : true});
       if (response.status === 200) {
         setTransactions((transactions || []).filter((transaction) => transaction._id !== _id));
       }
